@@ -1,19 +1,14 @@
-// Фильтрация проектов
-
 document.addEventListener('DOMContentLoaded', function() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
-    // Обработка кликов по кнопкам фильтра
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             
-            // Обновление активной кнопки
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
             
-            // Фильтрация проектов
             filterProjects(filter);
         });
     });
@@ -26,7 +21,6 @@ function filterProjects(filter) {
         const tech = card.getAttribute('data-tech');
         
         if (filter === 'all' || tech === filter) {
-            // Показываем карточку с анимацией
             card.style.display = 'block';
             card.style.opacity = '0';
             card.style.transform = 'scale(0.8)';
@@ -36,7 +30,6 @@ function filterProjects(filter) {
                 card.style.transform = 'scale(1)';
             }, 100);
         } else {
-            // Скрываем карточку с анимацией
             card.style.opacity = '0';
             card.style.transform = 'scale(0.8)';
             
@@ -46,33 +39,26 @@ function filterProjects(filter) {
         }
     });
     
-    // Анимация для контейнера проектов
     const projectsGrid = document.getElementById('projectsGrid');
     projectsGrid.style.transition = 'all 0.3s ease';
 }
 
-// Дополнительные функции для работы с фильтрами
 
-// Функция для сброса фильтров
 function resetFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
-    // Сброс активной кнопки
     filterButtons.forEach(btn => btn.classList.remove('active'));
     filterButtons[0].classList.add('active'); // Активируем кнопку "Все"
     
-    // Показываем все проекты
     filterProjects('all');
 }
 
-// Функция для получения активного фильтра
 function getActiveFilter() {
     const activeButton = document.querySelector('.filter-btn.active');
     return activeButton ? activeButton.getAttribute('data-filter') : 'all';
 }
 
-// Функция для подсчета проектов по фильтру
 function countProjectsByFilter(filter) {
     const projectCards = document.querySelectorAll('.project-card');
     let count = 0;
@@ -87,12 +73,10 @@ function countProjectsByFilter(filter) {
     return count;
 }
 
-// Обновление счетчика проектов
 function updateProjectCounter() {
     const activeFilter = getActiveFilter();
     const count = countProjectsByFilter(activeFilter);
     
-    // Можно добавить элемент для отображения счетчика
     let counter = document.getElementById('project-counter');
     if (!counter) {
         counter = document.createElement('div');
@@ -101,7 +85,7 @@ function updateProjectCounter() {
         counter.style.cssText = `
             text-align: center;
             margin: 20px 0;
-            color: var(--terminal-accent);
+            color: var(--text-primary);
             font-weight: bold;
         `;
         
@@ -112,18 +96,15 @@ function updateProjectCounter() {
     counter.textContent = `Найдено проектов: ${count}`;
 }
 
-// Инициализация счетчика при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     updateProjectCounter();
     
-    // Обновление счетчика при изменении фильтра
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(button => {
         button.addEventListener('click', updateProjectCounter);
     });
 });
 
-// Поиск проектов по названию
 function searchProjects(query) {
     const projectCards = document.querySelectorAll('.project-card');
     const searchQuery = query.toLowerCase();
@@ -140,7 +121,6 @@ function searchProjects(query) {
     });
 }
 
-// Добавление поля поиска (опционально)
 function addSearchField() {
     const filters = document.querySelector('.filters');
     if (filters && !document.getElementById('project-search')) {
@@ -158,11 +138,9 @@ function addSearchField() {
         searchInput.addEventListener('input', function() {
             const query = this.value;
             if (query.trim() === '') {
-                // Если поле пустое, показываем все проекты согласно активному фильтру
                 const activeFilter = getActiveFilter();
                 filterProjects(activeFilter);
             } else {
-                // Иначе ищем по запросу
                 searchProjects(query);
             }
         });
@@ -171,7 +149,3 @@ function addSearchField() {
     }
 }
 
-// Инициализация поиска (раскомментировать при необходимости)
-// document.addEventListener('DOMContentLoaded', function() {
-//     addSearchField();
-// });

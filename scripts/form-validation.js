@@ -1,6 +1,4 @@
-// Валидация форм
 
-// Правила валидации для различных типов полей
 const validationRules = {
     name: {
         required: true,
@@ -27,7 +25,6 @@ const validationRules = {
     }
 };
 
-// Инициализация валидации форм при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     initializeFormValidation();
 });
@@ -43,7 +40,6 @@ function initializeFormValidation() {
 function setupFormValidation(form) {
     const inputs = form.querySelectorAll('input, textarea');
     
-    // Добавляем обработчики для валидации в реальном времени
     inputs.forEach(input => {
         input.addEventListener('blur', function() {
             validateField(this);
@@ -54,7 +50,6 @@ function setupFormValidation(form) {
         });
     });
     
-    // Обработчик отправки формы
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -78,25 +73,21 @@ function validateField(field) {
     let isValid = true;
     let errorMessage = '';
     
-    // Проверка обязательности поля
     if (rules.required && !fieldValue) {
         isValid = false;
         errorMessage = 'Это поле обязательно для заполнения';
     }
     
-    // Проверка минимальной длины
     if (isValid && rules.minLength && fieldValue.length < rules.minLength) {
         isValid = false;
         errorMessage = `Минимальная длина: ${rules.minLength} символов`;
     }
     
-    // Проверка максимальной длины
     if (isValid && rules.maxLength && fieldValue.length > rules.maxLength) {
         isValid = false;
         errorMessage = `Максимальная длина: ${rules.maxLength} символов`;
     }
     
-    // Проверка по регулярному выражению
     if (isValid && rules.pattern && !rules.pattern.test(fieldValue)) {
         isValid = false;
         errorMessage = rules.message;
@@ -126,13 +117,10 @@ function validateForm(form) {
 }
 
 function showFieldError(field, message) {
-    // Удаляем предыдущие ошибки
     clearFieldError(field);
     
-    // Добавляем класс ошибки к полю
     field.classList.add('field-error');
     
-    // Создаем элемент с сообщением об ошибке
     const errorElement = document.createElement('div');
     errorElement.className = 'field-error-message';
     errorElement.textContent = message;
@@ -146,10 +134,8 @@ function showFieldError(field, message) {
         border-radius: 3px;
     `;
     
-    // Вставляем сообщение об ошибке после поля
     field.parentNode.insertBefore(errorElement, field.nextSibling);
     
-    // Анимация появления ошибки
     errorElement.style.opacity = '0';
     errorElement.style.transform = 'translateY(-10px)';
     
@@ -174,31 +160,24 @@ function handleFormSubmission(form) {
     const submitButton = form.querySelector('.form-submit');
     const originalButtonText = submitButton.textContent;
     
-    // Показываем состояние загрузки
     submitButton.textContent = '[Отправка...]';
     submitButton.disabled = true;
     
-    // Анимация кнопки
     submitButton.style.transform = 'scale(0.95)';
     setTimeout(() => {
         submitButton.style.transform = 'scale(1)';
     }, 150);
     
-    // Имитация отправки данных
     setTimeout(() => {
-        // Успешная отправка
         showSuccessMessage(form);
         
-        // Восстанавливаем кнопку
         submitButton.textContent = '[Отправлено!]';
         
-        // Очищаем форму через некоторое время
         setTimeout(() => {
             form.reset();
             submitButton.textContent = originalButtonText;
             submitButton.disabled = false;
             
-            // Убираем сообщение об успехе
             const successMessage = form.querySelector('.success-message');
             if (successMessage) {
                 successMessage.remove();
@@ -214,8 +193,8 @@ function showSuccessMessage(form) {
     successMessage.innerHTML = `
         <div style="
             background-color: rgba(0, 255, 0, 0.1);
-            border: 2px dashed var(--terminal-border);
-            color: var(--terminal-text);
+            border: 2px dashed var(--border-color);
+            color: var(--text-primary);
             padding: 15px;
             margin: 20px 0;
             text-align: center;
@@ -228,7 +207,6 @@ function showSuccessMessage(form) {
     
     form.parentNode.insertBefore(successMessage, form.nextSibling);
     
-    // Анимация появления
     successMessage.style.opacity = '0';
     successMessage.style.transform = 'translateY(-20px)';
     
@@ -239,23 +217,19 @@ function showSuccessMessage(form) {
     });
 }
 
-// Дополнительные функции валидации
 
-// Валидация email с проверкой домена
 function validateEmailDomain(email) {
     const allowedDomains = ['gmail.com', 'yandex.ru', 'mail.ru', 'edu.ru', 'outlook.com'];
     const domain = email.split('@')[1];
     return allowedDomains.includes(domain);
 }
 
-// Валидация номера телефона в российском формате
 function validateRussianPhone(phone) {
     const cleanPhone = phone.replace(/[\s\-\(\)]/g, '');
     const phonePattern = /^(\+7|8)?[0-9]{10}$/;
     return phonePattern.test(cleanPhone);
 }
 
-// Проверка на спам в сообщении
 function checkForSpam(message) {
     const spamWords = ['спам', 'реклама', 'кредит', 'займ'];
     const lowerMessage = message.toLowerCase();
@@ -263,19 +237,16 @@ function checkForSpam(message) {
     return spamWords.some(word => lowerMessage.includes(word));
 }
 
-// Кастомная валидация для специальных случаев
 function addCustomValidation(fieldName, validator) {
     if (typeof validator === 'function') {
         validationRules[fieldName] = validator;
     }
 }
 
-// Функция для добавления нового правила валидации
 function addValidationRule(fieldName, rule) {
     validationRules[fieldName] = { ...validationRules[fieldName], ...rule };
 }
 
-// Экспорт функций для использования в других модулях
 window.formValidation = {
     validateField,
     validateForm,

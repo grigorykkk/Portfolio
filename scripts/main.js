@@ -1,6 +1,4 @@
-// Основной JavaScript файл для портфолио
 
-// Данные проектов для модальных окон
 const projectsData = {
     'project1': {
         title: 'Проект 1 - Личный сайт',
@@ -95,19 +93,14 @@ const projectsData = {
     }
 };
 
-// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Анимация прогресс-баров
     animateProgressBars();
     
-    // Инициализация навигации
     initializeNavigation();
     
-    // Инициализация форм
     initializeForms();
 });
 
-// Анимация прогресс-баров при прокрутке
 function animateProgressBars() {
     const progressBars = document.querySelectorAll('.progress-fill, .course-fill');
     
@@ -127,22 +120,59 @@ function animateProgressBars() {
     progressBars.forEach(bar => observer.observe(bar));
 }
 
-// Инициализация навигации
 function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     
-    navLinks.forEach(link => {
+    navLinks.forEach((link, index) => {
         link.addEventListener('click', function(e) {
-            // Добавляем эффект нажатия
-            this.style.transform = 'scale(0.95)';
+            this.style.animation = 'pulse 0.3s ease-in-out';
             setTimeout(() => {
+                this.style.animation = '';
+            }, 300);
+        });
+        
+        link.addEventListener('mouseenter', function() {
+            setTimeout(() => {
+                this.style.transform = 'translateY(-4px) scale(1.05)';
+            }, index * 50);
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+        
+        link.addEventListener('focus', function() {
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+            this.style.boxShadow = 'var(--shadow-lg), 0 0 0 4px rgba(255, 193, 7, 0.3)';
+        });
+        
+        link.addEventListener('blur', function() {
+            if (!this.classList.contains('active')) {
                 this.style.transform = '';
-            }, 150);
+                this.style.boxShadow = 'var(--shadow-sm)';
+            }
         });
     });
+    
+    const navbar = document.querySelector('.navbar-nav');
+    if (navbar) {
+        navbar.style.opacity = '0';
+        navbar.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+            navbar.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            navbar.style.opacity = '1';
+            navbar.style.transform = 'translateY(0)';
+            
+            navLinks.forEach((link, index) => {
+                setTimeout(() => {
+                    link.style.animation = 'fadeInUp 0.5s ease-out forwards';
+                }, index * 100);
+            });
+        }, 200);
+    }
 }
 
-// Инициализация форм
 function initializeForms() {
     const forms = document.querySelectorAll('form');
     
@@ -150,14 +180,12 @@ function initializeForms() {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Добавляем анимацию отправки
             const submitBtn = form.querySelector('.form-submit');
             const originalText = submitBtn.textContent;
             
             submitBtn.textContent = '[Отправка...]';
             submitBtn.disabled = true;
             
-            // Имитация отправки
             setTimeout(() => {
                 submitBtn.textContent = '[Отправлено!]';
                 setTimeout(() => {
@@ -170,9 +198,7 @@ function initializeForms() {
     });
 }
 
-// Функция openProjectModal определена в modal.js
 
-// Функция для закрытия модального окна
 function closeProjectModal() {
     const modal = document.getElementById('projectModal');
     
@@ -182,7 +208,6 @@ function closeProjectModal() {
     }, 300);
 }
 
-// Закрытие модального окна при клике вне его
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('projectModal');
     if (event.target === modal) {
@@ -190,14 +215,12 @@ window.addEventListener('click', function(event) {
     }
 });
 
-// Закрытие модального окна по клавише Escape
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeProjectModal();
     }
 });
 
-// Плавная прокрутка для якорных ссылок
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -211,7 +234,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Эффект печатающейся машинки для заголовков
 function typewriterEffect(element, text, speed = 100) {
     element.innerHTML = '';
     let i = 0;
@@ -227,7 +249,6 @@ function typewriterEffect(element, text, speed = 100) {
     type();
 }
 
-// Инициализация эффекта печатающейся машинки для заголовков
 function initializeTypewriterEffect() {
     const titles = document.querySelectorAll('h1, h2');
     
@@ -248,7 +269,6 @@ function initializeTypewriterEffect() {
     });
 }
 
-// Инициализация всех эффектов
 document.addEventListener('DOMContentLoaded', function() {
     initializeTypewriterEffect();
 });

@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио студента - Главная</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <div class="main-content">
-        <!-- Объединенный блок логотипа и навигации -->
         <div class="header-nav-container">
-            <!-- Логотип и информация о студенте -->
             <div class="logo-section">
-                <img src="images/logo.png" alt="Логотип" class="logo-img">
-                <div class="student-name">Имя Студента</div>
+                <img src="images/logo.svg" alt="Логотип" class="logo-img">
+                <div class="student-name">Григорий Костин</div>
             </div>
 
-            <!-- Выпадающая навигация -->
             <nav class="navbar navbar-expand-lg navbar-custom">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,25 +38,22 @@
             </nav>
         </div>
 
-        <!-- Заголовок страницы -->
-        <h1>Главная страница (index.html)</h1>
+        <h1>Главная страница</h1>
 
-        <!-- Основная информация о студенте -->
         <section class="terminal-border">
             <div class="student-info">
                 <div class="photo-container">
-                    <img src="images/photo.jpg" alt="Фото студента" class="student-photo">
+                    <img src="images/photo_2025-10-15%2013.05.04.jpeg" alt="Фото студента" class="student-photo">
                 </div>
                 <div class="bio">
                     <p><strong>Привет! Я студент</strong></p>
-                    <p>Факультет ИТ, группа XX</p>
+                    <p>Факультет ИПТИП, группа ЭФБО-18-24</p>
                     <p>Увлекаюсь веб-разработкой</p>
                     <a href="assets/resume.pdf" class="resume-link" download>[Скачать резюме]</a>
                 </div>
             </div>
         </section>
 
-        <!-- Навыки -->
         <section class="terminal-border">
             <h2>Мои навыки</h2>
             <ul class="skills-list">
@@ -85,7 +79,7 @@
                     <span class="skill-percentage">85%</span>
                 </li>
                 <li class="skill-item">
-                    <span class="skill-name">React</span>
+                    <span class="skill-name">.NET</span>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 60%"></div>
                     </div>
@@ -94,39 +88,35 @@
             </ul>
         </section>
 
-        <!-- Лучшие проекты -->
         <section class="terminal-border">
             <h2>Лучшие проекты</h2>
             <div class="projects-grid">
                 <div class="project-card" onclick="openProjectModal('project1')">
-                    <div class="project-title">П1</div>
+                    <div class="project-title">Project 1</div>
                 </div>
                 <div class="project-card" onclick="openProjectModal('project2')">
-                    <div class="project-title">П2</div>
+                    <div class="project-title">Project 2</div>
                 </div>
                 <div class="project-card" onclick="openProjectModal('project3')">
-                    <div class="project-title">П3</div>
+                    <div class="project-title">Project 3</div>
                 </div>
             </div>
         </section>
 
-        <!-- Футер -->
         <footer class="footer">
-            <p>© 2024 <a href="pages/contacts.html" style="color: var(--terminal-text); text-decoration: none;">Контакты</a></p>
+            <p>© 2025 <a href="pages/contacts.html" style="color: var(--text-primary); text-decoration: none;">Контакты</a></p>
         </footer>
     </div>
 
-    <!-- Модальное окно для проектов -->
     <div id="projectModal" class="modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeProjectModal()">&times;</span>
             <div id="modalContent">
-                <!-- Содержимое будет загружено динамически -->
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts/modal.js"></script>
     <script src="scripts/main.js"></script>
 </body>

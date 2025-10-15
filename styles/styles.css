@@ -1,4 +1,3 @@
-/* Желто-черно-белая тема для портфолио студента */
 :root {
     --primary-bg: #ffffff;
     --secondary-bg: #f8f9fa;
@@ -8,7 +7,6 @@
     --text-secondary: #6c757d;
     --text-accent: #212529;
     
-    /* Основные цвета схемы */
     --yellow-primary: #ffc107;
     --yellow-secondary: #ffed4e;
     --yellow-dark: #e0a800;
@@ -18,7 +16,6 @@
     --white-primary: #ffffff;
     --white-secondary: #f8f9fa;
     
-    /* Акцентные цвета */
     --accent-yellow: #ffc107;
     --accent-yellow-hover: #e0a800;
     --accent-black: #000000;
@@ -26,14 +23,27 @@
     --accent-white: #ffffff;
     --accent-white-hover: #f8f9fa;
     
-    /* Тени */
+    --accent-blue: #007bff;
+    --accent-purple: #6f42c1;
+    --accent-pink: #e83e8c;
+    
+    --github-bg: #ffffff;
+    --github-bg-secondary: #f6f8fa;
+    --github-text: #24292e;
+    --github-text-secondary: #586069;
+    --github-border: #d1d5da;
+    --github-accent: #0366d6;
+    --github-accent-hover: #0256cc;
+    --github-success: #28a745;
+    --github-danger: #d73a49;
+    --github-shadow-lg: 0 8px 24px rgba(149, 157, 165, 0.2);
+    
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
     --shadow-yellow: 0 10px 25px -5px rgba(255, 193, 7, 0.3);
     
-    /* Градиенты */
     --gradient-primary: linear-gradient(135deg, #ffc107 0%, #ffed4e 100%);
     --gradient-secondary: linear-gradient(135deg, #000000 0%, #343a40 100%);
     --gradient-accent: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
@@ -55,7 +65,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Яркие и интерактивные блоки */
 .terminal-border {
     border: 1px solid var(--border-color);
     border-radius: 12px;
@@ -100,7 +109,6 @@ body {
     border-color: var(--accent-purple);
 }
 
-/* Заголовки в желто-черно-белой схеме */
 h1, h2, h3 {
     color: var(--text-primary);
     margin-bottom: 16px;
@@ -162,68 +170,63 @@ h3 {
     color: var(--black-light);
 }
 
-/* Выпадающая навигация */
 .navbar-custom {
     padding: 0 24px 20px 24px;
     position: relative;
     z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-toggler {
-    background: var(--black-primary);
-    border: 2px solid var(--black-primary);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin: 0 auto;
-    display: block;
-    transition: all 0.3s ease;
-}
-
-.navbar-toggler:hover {
-    background: var(--black-light);
-    border-color: var(--black-light);
-    transform: scale(1.05);
-}
-
-.navbar-toggler:focus {
-    box-shadow: 0 0 0 4px rgba(255, 193, 7, 0.3);
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='m4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    display: none;
 }
 
 .navbar-collapse {
-    background: var(--white-primary);
-    border: 2px solid var(--black-primary);
-    border-radius: 12px;
-    margin-top: 12px;
-    padding: 16px;
-    box-shadow: var(--shadow-lg);
+    display: flex !important;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 0;
+    width: 100%;
+    justify-content: center;
 }
 
 .navbar-nav {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    position: relative;
 }
 
 .nav-link {
     color: var(--black-primary);
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 14px 24px;
     border: 2px solid var(--yellow-primary);
     background: var(--white-primary);
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-weight: 600;
     font-size: 14px;
-    border-radius: 8px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
+    min-width: 120px;
+    text-align: center;
 }
 
 .nav-link::before {
@@ -234,19 +237,36 @@ h3 {
     width: 100%;
     height: 100%;
     background: var(--gradient-primary);
-    transition: left 0.3s ease;
+    transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: -1;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
 .nav-link:hover::before {
     left: 0;
 }
 
+.nav-link:hover::after {
+    width: 80%;
+}
+
 .nav-link:hover {
     color: var(--black-primary);
     border-color: var(--black-primary);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: var(--shadow-lg);
 }
 
 .nav-link.active {
@@ -254,36 +274,117 @@ h3 {
     color: var(--black-primary);
     border-color: var(--black-primary);
     font-weight: 700;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px) scale(1.02);
+    animation: activeGlow 2s ease-in-out infinite alternate;
 }
 
 .nav-link.active::before {
     display: none;
 }
 
-/* Адаптивность для больших экранов */
-@media (min-width: 768px) {
-    .navbar-nav {
-        flex-direction: row;
-        justify-content: center;
-        gap: 12px;
+.nav-link.active::after {
+    width: 80%;
+    background: var(--black-primary);
+    animation: activeLine 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes activeGlow {
+    0% {
+        box-shadow: var(--shadow-lg);
     }
-    
-    .navbar-toggler {
-        display: none;
-    }
-    
-    .navbar-collapse {
-        display: flex !important;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        margin-top: 0;
-        padding: 0;
+    100% {
+        box-shadow: var(--shadow-lg), 0 0 20px rgba(255, 193, 7, 0.3);
     }
 }
 
-/* Объединенный блок логотипа и навигации */
+@keyframes activeLine {
+    0% {
+        width: 60%;
+        opacity: 0.8;
+    }
+    100% {
+        width: 90%;
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: row;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        padding: 10px 16px;
+        font-size: 12px;
+        min-width: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-nav {
+        gap: 6px;
+    }
+    
+    .nav-link {
+        padding: 8px 12px;
+        font-size: 11px;
+        min-width: 70px;
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+    40%, 43% { transform: translateY(-8px); }
+    70% { transform: translateY(-4px); }
+    90% { transform: translateY(-2px); }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-link:active {
+    animation: pulse 0.3s ease-in-out;
+}
+
+.navbar-nav {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.nav-link {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
 .header-nav-container {
     background: var(--gradient-primary);
     margin: -24px -24px 32px -24px;
@@ -340,19 +441,16 @@ h3 {
     z-index: 1;
 }
 
-/* Основной контент */
 .main-content {
     max-width: 1280px;
     margin: 0 auto;
     padding: 24px;
 }
 
-/* Секции */
 .section {
     margin: 40px 0;
 }
 
-/* Информация о студенте */
 .student-info {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -460,7 +558,6 @@ h3 {
     border-color: var(--accent-pink);
 }
 
-/* Навыки с анимацией */
 .skills-list {
     list-style: none;
     margin-top: 16px;
@@ -556,7 +653,6 @@ h3 {
     z-index: 1;
 }
 
-/* Проекты с яркими карточками */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -628,7 +724,6 @@ h3 {
     transform: scale(1.05);
 }
 
-/* Фильтры проектов */
 .filters {
     display: flex;
     justify-content: flex-end;
@@ -688,7 +783,6 @@ h3 {
     display: none;
 }
 
-/* Формы с ярким дизайном */
 .form-group {
     margin: 20px 0;
 }
@@ -767,7 +861,6 @@ h3 {
     border-color: var(--accent-purple);
 }
 
-/* Контактная информация */
 .contact-info {
     margin: 16px 0;
 }
@@ -793,7 +886,6 @@ h3 {
     filter: brightness(1);
 }
 
-/* Прогресс обучения */
 .progress-item {
     display: flex;
     align-items: center;
@@ -817,7 +909,6 @@ h3 {
     font-size: 16px;
 }
 
-/* Курсы */
 .course-item {
     margin: 16px 0;
     padding: 16px;
@@ -856,7 +947,6 @@ h3 {
     border-radius: 6px;
 }
 
-/* Модальные окна */
 .modal {
     display: none;
     position: fixed;
@@ -905,7 +995,6 @@ h3 {
     color: var(--github-text);
 }
 
-/* Футер */
 .footer {
     text-align: center;
     margin-top: 48px;
@@ -915,7 +1004,6 @@ h3 {
     font-size: 14px;
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
     .student-info {
         grid-template-columns: 1fr;
@@ -987,9 +1075,7 @@ h3 {
     }
 }
 
-/* Анимации (убраны неоновые эффекты) */
 
-/* Скроллбар */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -1007,9 +1093,7 @@ h3 {
     background: var(--github-text-secondary);
 }
 
-/* Дополнительные GitHub-подобные стили */
 
-/* Badge стили для технологий */
 .badge {
     display: inline-block;
     padding: 4px 8px;
@@ -1044,7 +1128,6 @@ h3 {
     color: white;
 }
 
-/* Специальные цвета для разных технологий */
 .badge.html { background-color: #e34c26; border-color: #e34c26; }
 .badge.html5 { background-color: #e34c26; border-color: #e34c26; }
 .badge.css { background-color: #1572b6; border-color: #1572b6; }
@@ -1069,7 +1152,6 @@ h3 {
 .badge.express:hover { background-color: #333333; border-color: #333333; }
 .badge.localstorage:hover { background-color: #d68910; border-color: #d68910; }
 
-/* Улучшенные стили для модальных окон проектов */
 .project-modal-content {
     color: var(--github-text);
 }
@@ -1127,7 +1209,6 @@ h3 {
     padding: 6px 12px;
 }
 
-/* Стили для кнопок в стиле GitHub */
 .btn {
     display: inline-block;
     padding: 8px 16px;
@@ -1155,7 +1236,6 @@ h3 {
     text-decoration: none;
 }
 
-/* Счетчик проектов */
 .project-counter {
     font-size: 14px;
     color: var(--github-text-secondary);
@@ -1163,7 +1243,6 @@ h3 {
     text-align: center;
 }
 
-/* Placeholder для изображений */
 .placeholder-image {
     background-color: var(--github-bg-secondary);
     border: 1px dashed var(--github-border);
@@ -1174,7 +1253,6 @@ h3 {
     font-size: 14px;
 }
 
-/* Улучшенные стили для полей с ошибками */
 .field-error {
     border-color: var(--github-danger) !important;
 }
@@ -1189,7 +1267,6 @@ h3 {
     border-radius: 4px;
 }
 
-/* Стили для успешных сообщений */
 .success-message {
     background-color: rgba(26, 127, 55, 0.1);
     border: 1px solid rgba(26, 127, 55, 0.2);

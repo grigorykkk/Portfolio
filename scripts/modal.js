@@ -1,15 +1,11 @@
-// Управление модальными окнами
 
-// Глобальные переменные для модальных окон
 let currentModal = null;
 let modalStack = [];
 
-// Функция для открытия модального окна
 function openModal(modalId, content = null) {
     const modal = document.getElementById(modalId);
     
     if (modal) {
-        // Добавляем текущее модальное окно в стек
         if (currentModal) {
             modalStack.push(currentModal);
             closeModal(currentModal.id, false);
@@ -18,7 +14,6 @@ function openModal(modalId, content = null) {
         currentModal = modal;
         modal.style.display = 'block';
         
-        // Анимация появления
         modal.style.opacity = '0';
         modal.style.transform = 'scale(0.8)';
         
@@ -28,20 +23,16 @@ function openModal(modalId, content = null) {
             modal.style.transform = 'scale(1)';
         });
         
-        // Убеждаемся, что содержимое модального окна непрозрачное
         const modalContent = modal.querySelector('.modal-content');
         if (modalContent) {
             modalContent.style.opacity = '1';
             modalContent.style.backgroundColor = 'var(--white-primary)';
         }
         
-        // Блокируем прокрутку страницы
         document.body.style.overflow = 'hidden';
         
-        // Фокус на модальном окне для доступности
         modal.focus();
         
-        // Если передано содержимое, вставляем его
         if (content && typeof content === 'string') {
             const modalContent = modal.querySelector('.modal-content');
             if (modalContent) {
@@ -51,7 +42,6 @@ function openModal(modalId, content = null) {
     }
 }
 
-// Функция для закрытия модального окна
 function closeModal(modalId = null, restoreStack = true) {
     let modal;
     
@@ -62,7 +52,6 @@ function closeModal(modalId = null, restoreStack = true) {
     }
     
     if (modal) {
-        // Анимация исчезновения
         modal.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
         modal.style.opacity = '0';
         modal.style.transform = 'scale(0.8)';
@@ -71,7 +60,6 @@ function closeModal(modalId = null, restoreStack = true) {
             modal.style.display = 'none';
             modal.style.transition = '';
             
-            // Восстанавливаем предыдущее модальное окно из стека
             if (restoreStack && modalStack.length > 0) {
                 const previousModalId = modalStack.pop();
                 const previousModal = document.getElementById(previousModalId);
@@ -80,14 +68,12 @@ function closeModal(modalId = null, restoreStack = true) {
                 }
             } else if (modalStack.length === 0) {
                 currentModal = null;
-                // Разблокируем прокрутку страницы
                 document.body.style.overflow = '';
             }
         }, 300);
     }
 }
 
-// Функция для открытия модального окна проекта
 function openProjectModal(projectId) {
     const projectData = getProjectData(projectId);
     
@@ -97,9 +83,7 @@ function openProjectModal(projectId) {
     }
 }
 
-// Функция для получения данных проекта
 function getProjectData(projectId) {
-    // Данные проектов (можно вынести в отдельный файл)
     const projectsData = {
         'project1': {
             title: 'Проект 1 - Личный сайт',
@@ -112,36 +96,36 @@ function getProjectData(projectId) {
                 'SEO оптимизация'
             ],
             demo: '#',
-            github: '#',
-            images: ['project1-1.jpg', 'project1-2.jpg']
+            github: 'https://github.com/grigorykkk/FrontAndBack',
+            images: ['photo_2025-10-15 13.05.04.jpeg', 'photo_2025-10-15 13.05.06.jpeg']
         },
         'project2': {
-            title: 'Проект 2 - Todo приложение',
-            description: 'Интерактивное приложение для управления задачами с возможностью добавления, редактирования и удаления.',
-            technologies: ['HTML5', 'CSS3', 'JavaScript', 'LocalStorage'],
+            title: 'Проект 2 - PKS',
+            description: 'Репозиторий по выполнению задач на языке C# с примерами кода и решениями различных алгоритмических задач.',
+            technologies: ['C#', '.NET', 'Visual Studio', 'Git'],
             features: [
-                'Добавление и удаление задач',
-                'Отметка выполненных задач',
-                'Сохранение в локальном хранилище',
-                'Фильтрация задач'
+                'Решение алгоритмических задач',
+                'Примеры кода на C#',
+                'Документированные решения',
+                'Структурированная организация проектов'
             ],
             demo: '#',
-            github: '#',
-            images: ['project2-1.jpg', 'project2-2.jpg']
+            github: 'https://github.com/grigorykkk/PKS',
+            images: ['photo_2025-10-15 13.05.04.jpeg', 'photo_2025-10-15 13.05.06.jpeg']
         },
         'project3': {
-            title: 'Проект 3 - Интернет-магазин',
-            description: 'Полнофункциональный интернет-магазин с корзиной покупок и системой заказов.',
-            technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+            title: 'Проект 3 - Front And Back 2.0',
+            description: 'Обычный сайт на HTML, CSS и JavaScript с современным дизайном и интерактивными элементами.',
+            technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
             features: [
-                'Каталог товаров',
-                'Корзина покупок',
-                'Система регистрации',
-                'Обработка заказов'
+                'Адаптивный дизайн',
+                'Интерактивные элементы',
+                'Современный UI/UX',
+                'Кроссбраузерная совместимость'
             ],
             demo: '#',
-            github: '#',
-            images: ['project3-1.jpg', 'project3-2.jpg']
+            github: 'https://github.com/grigorykkk/FrontAndBack2.0',
+            images: ['photo_2025-10-15 13.05.06.jpeg', 'photo_2025-10-15 13.05.08.jpeg']
         },
         'personal-website': {
             title: 'Личный сайт',
@@ -154,36 +138,36 @@ function getProjectData(projectId) {
                 'Оптимизация производительности'
             ],
             demo: '#',
-            github: '#',
+            github: 'https://github.com/grigorykkk/FrontAndBack2.0',
             images: ['personal-1.jpg']
         },
-        'todo-app': {
-            title: 'Todo-приложение',
-            description: 'Интерактивное приложение для управления задачами с современным интерфейсом.',
-            technologies: ['JavaScript'],
+        'csharp-tasks': {
+            title: 'PKS',
+            description: 'Репозиторий по выполнению задач на языке C# с примерами кода и решениями различных алгоритмических задач.',
+            technologies: ['C#', '.NET', 'Visual Studio', 'Git'],
             features: [
-                'CRUD операции',
-                'Локальное хранение данных',
-                'Валидация форм',
-                'Responsive дизайн'
+                'Решение алгоритмических задач',
+                'Примеры кода на C#',
+                'Документированные решения',
+                'Структурированная организация проектов'
             ],
             demo: '#',
-            github: '#',
-            images: ['todo-1.jpg']
+            github: 'https://github.com/grigorykkk/PKS',
+            images: ['photo_2025-10-15 13.05.04.jpeg']
         },
-        'online-store': {
-            title: 'Интернет-магазин',
-            description: 'Полнофункциональный интернет-магазин с административной панелью.',
-            technologies: ['React'],
+        'frontend-website': {
+            title: 'Front And Back 2.0',
+            description: 'Обычный сайт на HTML, CSS и JavaScript с современным дизайном и интерактивными элементами.',
+            technologies: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap'],
             features: [
-                'SPA архитектура',
-                'Управление состоянием',
-                'API интеграция',
-                'Пагинация и фильтрация'
+                'Адаптивный дизайн',
+                'Интерактивные элементы',
+                'Современный UI/UX',
+                'Кроссбраузерная совместимость'
             ],
             demo: '#',
-            github: '#',
-            images: ['store-1.jpg']
+            github: 'https://github.com/grigorykkk/FrontAndBack2.0',
+            images: ['photo_2025-10-15 13.05.08.jpeg']
         },
         'portfolio': {
             title: 'Портфолио',
@@ -196,15 +180,14 @@ function getProjectData(projectId) {
                 'Контактные формы'
             ],
             demo: '#',
-            github: '#',
-            images: ['portfolio-1.jpg']
+            github: 'https://github.com/grigorykkk/Portfolio',
+            images: ['photo_2025-10-15 13.05.08.jpeg']
         }
     };
     
     return projectsData[projectId] || null;
 }
 
-// Функция для генерации содержимого модального окна проекта
 function generateProjectModalContent(project) {
     return `
         <div class="project-modal-content">
@@ -251,28 +234,23 @@ function generateProjectModalContent(project) {
     `;
 }
 
-// Функция для закрытия модального окна проекта
 function closeProjectModal() {
     closeModal('projectModal');
 }
 
-// Инициализация обработчиков событий
 document.addEventListener('DOMContentLoaded', function() {
-    // Закрытие модального окна при клике вне его
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('modal')) {
             closeModal(event.target.id);
         }
     });
     
-    // Закрытие модального окна по клавише Escape
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && currentModal) {
             closeModal();
         }
     });
     
-    // Обработка кликов по кнопкам закрытия
     document.addEventListener('click', function(event) {
         if (event.target.classList.contains('modal-close')) {
             const modal = event.target.closest('.modal');
@@ -283,7 +261,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Функция для создания кастомного модального окна
 function createCustomModal(options) {
     const {
         id,
@@ -308,19 +285,16 @@ function createCustomModal(options) {
         </div>
     `;
     
-    // Добавляем модальное окно в DOM
     document.body.insertAdjacentHTML('beforeend', modalHtml);
     
     return document.getElementById(id);
 }
 
-// Функция для удаления модального окна
 function destroyModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.remove();
         
-        // Если это было текущее модальное окно, очищаем ссылку
         if (currentModal && currentModal.id === modalId) {
             currentModal = null;
             document.body.style.overflow = '';
