@@ -1,10 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио студента - Проекты</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
+    <div class="main-content">
+        <div class="header-nav-container">
+            <div class="logo-section">
+                <img src="../images/logo.svg" alt="Логотип" class="logo-img">
+                <div class="student-name">Григорий Костин</div>
+            </div>
 
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="../index.html" class="nav-link">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="projects.html" class="nav-link active">Проекты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="diary.html" class="nav-link">Дневник</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contacts.html" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <h1>Страница проектов</h1>
+        
+        <div class="terminal-border">
+            <p>Здесь вы можете ознакомиться с моими репозиториями. Проекты организованы в адаптивную сетку, где каждая карточка содержит название проекта, краткое описание и список использованных технологий.</p>
+            <p>Для удобства навигации реализована система фильтрации - вы можете отбирать проекты по технологиям (HTML/CSS, JavaScript, React и другие). При клике на карточку проекта открывается модальное окно с детальной информацией: полным описанием, скриншотами, ссылками на живую версию и исходный код.</p>
+        </div>
+
+        <section class="terminal-border">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 style="margin: 0;">Мои проекты</h2>
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="frontend">Frontend</button>
+                    <button class="filter-btn" data-filter="backend">Backend</button>
+                    <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card" data-tech="frontend" onclick="openProjectModal('personal-website')">
+                    <div class="project-title">Личный сайт</div>
+                    <div class="project-tech">HTML, CSS</div>
+                </div>
+                <div class="project-card" data-tech="backend" onclick="openProjectModal('csharp-tasks')">
+                    <div class="project-title">PKS</div>
+                    <div class="project-tech">C#, .NET</div>
+                </div>
+                <div class="project-card" data-tech="fullstack" onclick="openProjectModal('frontend-website')">
+                    <div class="project-title">Front And Back 2.0</div>
+                    <div class="project-tech">HTML5, CSS3, JavaScript</div>
+                </div>
+                <div class="project-card" data-tech="frontend" onclick="openProjectModal('portfolio')">
+                    <div class="project-title">Портфолио</div>
+                    <div class="project-tech">Bootstrap</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 <a href="contacts.html" style="color: var(--text-primary); text-decoration: none;">Контакты</a></p>
+        </footer>
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+            <div id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../scripts/filters.js"></script>
+    <script src="../scripts/modal.js"></script>
+    <script src="../scripts/main.js"></script>
 </body>
 </html>

@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио студента - Главная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
+    <div class="main-content">
+        <div class="header-nav-container">
+            <div class="logo-section">
+                <img src="images/logo.svg" alt="Логотип" class="logo-img">
+                <div class="student-name">Григорий Костин</div>
+            </div>
 
+            <nav class="navbar navbar-expand-lg navbar-custom">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link active">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/projects.html" class="nav-link">Проекты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/diary.html" class="nav-link">Дневник</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pages/contacts.html" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <h1>Главная страница</h1>
+
+        <section class="terminal-border">
+            <div class="student-info">
+                <div class="photo-container">
+                    <img src="images/photo_2025-10-15%2013.05.04.jpeg" alt="Фото студента" class="student-photo">
+                </div>
+                <div class="bio">
+                    <p><strong>Привет! Я студент</strong></p>
+                    <p>Факультет ИПТИП, группа ЭФБО-18-24</p>
+                    <p>Увлекаюсь веб-разработкой</p>
+                    <a href="assets/resume.pdf" class="resume-link" download>[Скачать резюме]</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="terminal-border">
+            <h2>Мои навыки</h2>
+            <ul class="skills-list">
+                <li class="skill-item">
+                    <span class="skill-name">HTML/CSS</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 90%"></div>
+                    </div>
+                    <span class="skill-percentage">90%</span>
+                </li>
+                <li class="skill-item">
+                    <span class="skill-name">JavaScript</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 80%"></div>
+                    </div>
+                    <span class="skill-percentage">80%</span>
+                </li>
+                <li class="skill-item">
+                    <span class="skill-name">Bootstrap</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="skill-percentage">85%</span>
+                </li>
+                <li class="skill-item">
+                    <span class="skill-name">.NET</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <span class="skill-percentage">60%</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="terminal-border">
+            <h2>Лучшие проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="openProjectModal('project1')">
+                    <div class="project-title">Project 1</div>
+                </div>
+                <div class="project-card" onclick="openProjectModal('project2')">
+                    <div class="project-title">Project 2</div>
+                </div>
+                <div class="project-card" onclick="openProjectModal('project3')">
+                    <div class="project-title">Project 3</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 <a href="pages/contacts.html" style="color: var(--text-primary); text-decoration: none;">Контакты</a></p>
+        </footer>
+    </div>
+
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+            <div id="modalContent">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/modal.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
